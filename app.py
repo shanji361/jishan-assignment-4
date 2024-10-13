@@ -11,7 +11,6 @@ nltk.download('stopwords')
 
 app = Flask(__name__)
 
-
 # TODO: Fetch dataset, initialize vectorizer and LSA here
 
 newsgroups = fetch_20newsgroups(subset = 'all')

@@ -22,6 +22,7 @@ document.getElementById('search-form').addEventListener('submit', function (even
     });
 });
 
+
 function displayResults(data) {
     let resultsDiv = document.getElementById('results');
     resultsDiv.innerHTML = '<h2>Results</h2>';
@@ -32,6 +33,7 @@ function displayResults(data) {
     }
 }
 
+let chart;
 function displayChart(data) {
     // Input: data (object) - contains the following keys:
     //        - documents (list) - list of documents
@@ -39,8 +41,11 @@ function displayChart(data) {
     //        - similarities (list) - list of similarities
     // TODO: Implement function to display chart here
     //       There is a canvas element in the HTML file with the id 'similarity-chart'
-    const ctx = document.getElemenrById('similarity-chart').getContext('2d');
-    const chart = new Chart(ctx, {
+    const ctx = document.getElementById('similarity-chart').getContext('2d');
+    if (chart) {
+        chart.destroy();
+    }
+    chart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: data.indices,
